@@ -58,6 +58,12 @@ a:hover, a:active, a:focus {
   text-decoration: none;
 }
 
+.kasb_title{
+  font-size: 80px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 20px;
+}
 p {
   margin-bottom: 20px;
 }

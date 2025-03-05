@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirish</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            background-image: url('images/img_bg_1.jpg');
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn-primary { background: #007BFF; }
+        .btn-primary:hover { background: #0056b3; }
+        .btn-success { background: #28a745; }
+        .btn-success:hover { background: #218838; }
+        .link-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .link {
+            text-decoration: none;
+            color: #007BFF;
+            cursor: pointer;
+        }
+        .link:hover { text-decoration: underline; }
+        .social-login {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .social-login a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .facebook { background: #3b5998; }
+        .google { background: #db4437; }
+        .linkedin { background: #0077b5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hisobga kirish</h2>
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <label for="email">Email manzil</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Parol</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Kirish</button>
+        </form>
+        <div class="link-container">
+            <a href="verify-code.html" class="link">Parolni unutdingizmi?</a>
+            <a href="register.html" class="btn btn-success">Ro‘yxatdan o‘tish</a>
+        </div>
+        <div class="social-login">
+            <a href="#" class="facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            <a href="#" class="google"><i class="fa-brands fa-google"></i> Google</a>
+            <a href="#" class="linkedin"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </div>
+</body>
+</html>

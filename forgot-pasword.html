@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email tasdiqlash</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            background-image: url('images/img_bg_1.jpg');
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 0.5s forwards ease-out;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn-primary { background: #007BFF; }
+        .btn-primary:hover { background: #0056b3; }
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInError 0.3s ease-in-out;
+        }
+        @keyframes fadeInError {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .timer {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Email tasdiqlash</h2>
+        <p>Emailga yuborilgan 5 xonali kodni kiriting:</p>
+        <div class="input-group">
+            <input type="text" id="verificationCode" maxlength="5" placeholder="XXXXX">
+            <p class="error-message" id="errorMessage">Kod xato, qayta urinib ko'ring!</p>
+        </div>
+        <button class="btn btn-primary" id="verifyBtn" onclick="verifyCode()">Tasdiqlash</button>
+        <p class="timer" id="resendTimer">Qayta kod yuborish: <span id="countdown">90</span> soniya</p>
+        <button class="btn btn-primary" id="resendBtn" onclick="resendCode()" style="display: none;">Qayta yuborish</button>
+    </div>
+
+    <script>
+        let countdown = 90;
+        let interval = setInterval(() => {
+            countdown--;
+            document.getElementById("countdown").textContent = countdown;
+            if (countdown === 0) {
+                clearInterval(interval);
+                document.getElementById("resendTimer").style.display = "none";
+                document.getElementById("resendBtn").style.display = "block";
+            }
+        }, 1000);
+
+        function verifyCode() {
+            let code = document.getElementById("verificationCode").value;
+            let errorMessage = document.getElementById("errorMessage");
+            if (code === "88246") {
+                alert("Kod tasdiqlandi!");
+                window.location.href = "success.html";
+            } else {
+                errorMessage.style.display = "block";
+                errorMessage.style.animation = "none";
+                setTimeout(() => {
+                    errorMessage.style.animation = "fadeInError 0.3s ease-in-out";
+                }, 10);
+            }
+        }
+
+        function resendCode() {
+            alert("Yangi kod yuborildi!");
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

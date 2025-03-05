@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro‘yxatdan o‘tish</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            position: relative;
+            background-image: url('images/img_bg_1.jpg');
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            background: #007BFF;
+        }
+        .btn:hover { background: #0056b3; }
+        .link-container {
+            margin-top: 10px;
+        }
+        .link {
+            text-decoration: none;
+            color: #007BFF;
+            cursor: pointer;
+        }
+        .link:hover { text-decoration: underline; }
+        .notification {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #28a745;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: top 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ro‘yxatdan o‘tish</h2>
+        <form id="registerForm">
+            <div class="input-group">
+                <label for="name">Ism</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email manzil</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Yangi parol</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Yangi parolni tasdiqlang</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="btn">Ro‘yxatdan o‘tish</button>
+        </form>
+        <div class="link-container">
+            <p>Allaqachon hisobingiz bormi? <a href="login.html" class="link">Kirish</a></p>
+        </div>
+    </div>
+
+    <!-- Animatsiyali bildirishnoma -->
+    <div class="notification" id="notification">
+        Siz muvaffaqiyatli ro‘yxatdan o‘tdingiz! <br>
+        Kirish bo‘limi orqali akkauntingizga kiring.
+    </div>
+
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Sahifani qayta yuklamaslik uchun
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password !== confirmPassword) {
+                alert("Parollar mos kelmayapti! Qayta tekshirib kiriting.");
+                return;
+            }
+
+            // Animatsiya bilan xabar chiqarish
+            let notification = document.getElementById("notification");
+            notification.style.top = "20px";
+
+            setTimeout(() => {
+                notification.style.top = "-100px";
+                window.location.href = "login.html"; // 3 sekunddan keyin login sahifasiga o'tish
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

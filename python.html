@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Kurs Platformasi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('./images/img_bg_1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: #444;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .progress {
+            height: 20px;
+            background: #4CAF50;
+            width: 0%;
+            transition: width 0.5s;
+        }
+
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .lesson,
+        .test {
+            background: #292929;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .lesson:hover,
+        .test:hover {
+            transform: scale(1.05);
+        }
+
+        .watch-btn,
+        .next-btn,
+        .test-btn {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .watch-btn:hover,
+        .next-btn:hover,
+        .test-btn:hover {
+            background: #218838;
+        }
+
+        .video-container {
+            margin-top: 10px;
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .video-container.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .watch-btn, .next-btn, .test-btn {
+        width: 100%;
+        padding: 10px;
+    }
+
+    iframe {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .progress-bar {
+        height: 15px;
+    }
+
+    .progress-text {
+        font-size: 12px;
+    }
+
+    iframe {
+        height: 200px;
+    }
+}
+
+/* Videoni responsiv qilish */
+.video-container iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Python Kursi</h1>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+            <div class="progress-text" id="progress-text">0% tugallandi</div>
+        </div>
+        <div id="lesson-container"></div>
+    </div>
+    <script>
+        const lessons = [
+            { title: "Pythonga Kirish", video: "https://www.youtube.com/embed/nitlLnbp7ak" },
+            { title: "Ma'lumot turlari", video: "#" },
+            { test: true },
+            { title: "O'zgaruvchilar", video: "#" },
+            { title: "Operatorlar", video: "#" },
+            { test: true },
+        ];
+
+        let completedLessons = 0;
+        const lessonContainer = document.getElementById("lesson-container");
+        const progressBar = document.getElementById("progress");
+        const progressText = document.getElementById("progress-text");
+
+        function updateProgress() {
+            let progress = (completedLessons / lessons.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${Math.round(progress)}% tugallandi`;
+        }
+
+        lessons.forEach((lesson, index) => {
+            const lessonDiv = document.createElement("div");
+            lessonDiv.classList.add(lesson.test ? "test" : "lesson");
+
+            if (lesson.test) {
+                lessonDiv.innerHTML = `
+                    <h3>Test ${Math.floor(index / 3)}</h3>
+                    <p>Testni yeching va natijani ko'ring.</p>
+                    <button class="test-btn">Testni boshlash</button>
+                `;
+                const testBtn = lessonDiv.querySelector(".test-btn");
+                testBtn.addEventListener("click", function () {
+                    window.location.href = "test.html"; // Test sahifasiga yo‘naltirish
+                });
+            } else {
+                lessonDiv.innerHTML = `
+                    <h3>${lesson.title}</h3>
+                    <button class="watch-btn">Ko'rish</button>
+                    <div class="video-container">
+                        <iframe src="" allowfullscreen></iframe>
+                    </div>
+                    <button class="next-btn" style="display: none;">Keyingi darsga o'tish</button>
+                `;
+            }
+            lessonContainer.appendChild(lessonDiv);
+        });
+
+        document.querySelectorAll(".watch-btn").forEach((btn, index) => {
+            btn.addEventListener("click", function () {
+                const videoContainer = this.nextElementSibling;
+                const iframe = videoContainer.querySelector("iframe");
+                iframe.src = lessons[index].video;
+                videoContainer.classList.add("show");
+                this.style.display = "none";
+                this.nextElementSibling.nextElementSibling.style.display = "inline-block";
+            });
+        });
+
+        document.querySelectorAll(".next-btn").forEach((btn, index) => {
+            btn.addEventListener("click", function () {
+                completedLessons++;
+                updateProgress();
+                const nextLesson = this.closest(".lesson, .test").nextElementSibling;
+                if (nextLesson) {
+                    nextLesson.scrollIntoView({ behavior: "smooth" });
+                }
+                this.style.display = "none";
+            });
+        });
+        document.querySelectorAll(".next-btn").forEach((btn, index) => {
+            btn.addEventListener("click", function () {
+                const lessonDiv = this.closest(".lesson");
+
+                // Joriy darsning video oynasini yopish
+                const videoContainer = lessonDiv.querySelector(".video-container");
+                const iframe = videoContainer.querySelector("iframe");
+                iframe.src = ""; // Videoni tozalash
+                videoContainer.classList.remove("show"); // Videoni yashirish
+
+                // "Ko‘rish" tugmasini qayta ko‘rsatish
+                const watchBtn = lessonDiv.querySelector(".watch-btn");
+                watchBtn.style.display = "inline-block";
+
+                // "Keyingi darsga o'tish" tugmasini yashirish
+                this.style.display = "none";
+
+                // Progressni yangilash
+                completedLessons++;
+                updateProgress();
+
+                // Keyingi darsga o'tish
+                const nextLesson = lessonDiv.nextElementSibling;
+                if (nextLesson) {
+                    nextLesson.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        });
+
+        // "Ko‘rish" tugmasini ishlashini tiklash
+        document.querySelectorAll(".watch-btn").forEach((btn, index) => {
+            btn.addEventListener("click", function () {
+                const videoContainer = this.nextElementSibling;
+                const iframe = videoContainer.querySelector("iframe");
+                iframe.src = lessons[index].video; // YouTube videosini yuklash
+                videoContainer.classList.add("show");
+
+                // "Ko‘rish" tugmasini yashirish va "Keyingi dars" tugmasini ko‘rsatish
+                this.style.display = "none";
+                this.nextElementSibling.nextElementSibling.style.display = "inline-block";
+            });
+        });
+
+    </script>
+</body>
+
+</html>

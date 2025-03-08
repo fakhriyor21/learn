@@ -174,7 +174,7 @@
     <script>
         const lessons = [
             { title: "Pythonga Kirish", video: "https://www.youtube.com/embed/nitlLnbp7ak" },
-            { title: "Ma'lumot turlari", video: "#" },
+            { title: "Ma'lumot turlari", video: "https://www.youtube.com/embed/nitlLnbp7ak" },
             { test: true },
             { title: "O'zgaruvchilar", video: "#" },
             { title: "Operatorlar", video: "#" },
@@ -269,6 +269,11 @@
                 }
             });
         });
+        document.querySelectorAll(".test-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+        window.location.href = "test.html"; // Test sahifasiga yo‘naltirish
+    });
+});
 
         // "Ko‘rish" tugmasini ishlashini tiklash
         document.querySelectorAll(".watch-btn").forEach((btn, index) => {

@@ -144,18 +144,39 @@
     </div>
 
     <script>
-        const questions = [
-            { question: "1. Python dasturlash tilida qanday ma'lumot turlari mavjud?", options: ["A) int, float, str", "B) list, tuple, dictionary", "C) Hammasi"], answer: "C" },
-            { question: "2. Python-da o'zgaruvchi qanday e'lon qilinadi?", options: ["A) let x = 10", "B) x = 10", "C) var x = 10"], answer: "B" },
-            { question: "3. Python-da funksiyalar qanday e'lon qilinadi?", options: ["A) def myFunction():", "B) function myFunction():", "C) func myFunction():"], answer: "A" },
-            { question: "4. Python-da list qanday yaratiladi?", options: ["A) x = [1, 2, 3]", "B) x = {1, 2, 3}", "C) x = (1, 2, 3)"], answer: "A" },
-            { question: "5. Python-da shart operatori qaysi?", options: ["A) if-else", "B) switch-case", "C) loop-while"], answer: "A" },
-            { question: "6. Python-da for tsikli qanday ishlaydi?", options: ["A) for x in range(5):", "B) for (x = 0; x < 5; x++)", "C) foreach x in range(5)"], answer: "A" },
-            { question: "7. Python-da lambda nima?", options: ["A) Oddiy funksiya", "B) Anonim funksiya", "C) Klass"], answer: "B" },
-            { question: "8. Python-da exception handling qaysi kalit so‘z bilan ishlaydi?", options: ["A) try-except", "B) catch-throw", "C) error-handling"], answer: "A" },
-            { question: "9. Python-da dictionary qanday yaratiladi?", options: ["A) x = {'ism': 'Ali'}", "B) x = ['ism': 'Ali']", "C) x = ('ism': 'Ali')"], answer: "A" },
-            { question: "10. Python-da obyektlar qanday e'lon qilinadi?", options: ["A) class MyClass:", "B) create MyClass", "C) object MyClass"], answer: "A" }
-        ];
+      const questions = [
+    { question: "1. Python dasturlash tilida qanday ma'lumot turlari mavjud?", options: ["A) int, float, str", "B) list, tuple, dictionary", "C) Hammasi"], answer: "C" },
+    { question: "2. Python-da o'zgaruvchi qanday e'lon qilinadi?", options: ["A) let x = 10", "B) x = 10", "C) var x = 10"], answer: "B" },
+    { question: "3. Python-da funksiyalar qanday e'lon qilinadi?", options: ["A) def myFunction():", "B) function myFunction():", "C) func myFunction():"], answer: "A" },
+    { question: "4. Python-da list qanday yaratiladi?", options: ["A) x = [1, 2, 3]", "B) x = {1, 2, 3}", "C) x = (1, 2, 3)"], answer: "A" },
+    { question: "5. Python-da shart operatori qaysi?", options: ["A) if-else", "B) switch-case", "C) loop-while"], answer: "A" },
+    { question: "6. Python-da for tsikli qanday ishlaydi?", options: ["A) for x in range(5):", "B) for (x = 0; x < 5; x++)", "C) foreach x in range(5)"], answer: "A" },
+    { question: "7. Python-da lambda nima?", options: ["A) Oddiy funksiya", "B) Anonim funksiya", "C) Klass"], answer: "B" },
+    { question: "8. Python-da exception handling qaysi kalit so‘z bilan ishlaydi?", options: ["A) try-except", "B) catch-throw", "C) error-handling"], answer: "A" },
+    { question: "9. Python-da dictionary qanday yaratiladi?", options: ["A) x = {'ism': 'Ali'}", "B) x = ['ism': 'Ali']", "C) x = ('ism': 'Ali')"], answer: "A" },
+    { question: "10. Python-da obyektlar qanday e'lon qilinadi?", options: ["A) class MyClass:", "B) create MyClass", "C) object MyClass"], answer: "A" },
+    { question: "11. Python-da tuple qanday yaratiladi?", options: ["A) x = (1, 2, 3)", "B) x = {1, 2, 3}", "C) x = [1, 2, 3]"], answer: "A" },
+    { question: "12. Python-da while tsikli qanday yoziladi?", options: ["A) while x < 5:", "B) do while x < 5", "C) while (x < 5)"], answer: "A" },
+    { question: "13. Python-da qanday iteratsion struktura mavjud?", options: ["A) for, while", "B) foreach, do-while", "C) switch-case"], answer: "A" },
+    { question: "14. Python-da qanday kutubxona ma’lumotlar bazasiga ulanish uchun ishlatiladi?", options: ["A) sqlite3", "B) pandas", "C) numpy"], answer: "A" },
+    { question: "15. Python-da fayl ochish uchun qaysi funksiya ishlatiladi?", options: ["A) open()", "B) read()", "C) write()"], answer: "A" },
+    { question: "16. Python-da set qanday yaratiladi?", options: ["A) x = {1, 2, 3}", "B) x = [1, 2, 3]", "C) x = (1, 2, 3)"], answer: "A" },
+    { question: "17. Python-da kalit-qiymat juftligi qaysi ma’lumot turida saqlanadi?", options: ["A) dictionary", "B) list", "C) tuple"], answer: "A" },
+    { question: "18. Python-da range() funksiyasi nima uchun ishlatiladi?", options: ["A) Tsikl yaratish", "B) Matn chop etish", "C) Obyekt yaratish"], answer: "A" },
+    { question: "19. Python-da def kalit so‘zi nima uchun ishlatiladi?", options: ["A) Funksiya e’lon qilish", "B) O‘zgaruvchi yaratish", "C) Shart operatori"], answer: "A" },
+    { question: "20. Python-da pass operatori nima qiladi?", options: ["A) Hech narsa bajarmaydi", "B) O‘zgaruvchi o‘rnatadi", "C) Tsiklni to‘xtatadi"], answer: "A" },
+    { question: "21. Python-da list comprehension qanday ishlaydi?", options: ["A) [x for x in range(10)]", "B) {x for x in range(10)}", "C) (x for x in range(10))"], answer: "A" },
+    { question: "22. Python-da qanday kutubxona grafik chizish uchun ishlatiladi?", options: ["A) matplotlib", "B) numpy", "C) pandas"], answer: "A" },
+    { question: "23. Python-da max() funksiyasi nima uchun ishlatiladi?", options: ["A) Eng katta qiymatni topish", "B) O‘rtacha qiymatni hisoblash", "C) Eng kichik qiymatni topish"], answer: "A" },
+    { question: "24. Python-da len() funksiyasi nima uchun ishlatiladi?", options: ["A) Elementlar sonini hisoblash", "B) Ro‘yxatni teskari qilish", "C) So‘zlarni birlashtirish"], answer: "A" },
+    { question: "25. Python-da slicing nima uchun ishlatiladi?", options: ["A) Ro‘yxatning ma’lum qismini olish", "B) Ro‘yxatni teskari qilish", "C) Ro‘yxatga element qo‘shish"], answer: "A" },
+    { question: "26. Python-da type() funksiyasi nima qiladi?", options: ["A) O‘zgaruvchining turini aniqlaydi", "B) O‘zgaruvchini chop etadi", "C) O‘zgaruvchini o‘zgartiradi"], answer: "A" },
+    { question: "27. Python-da list() funksiyasi nima uchun ishlatiladi?", options: ["A) Ro‘yxat yaratish", "B) Sonlarni qo‘shish", "C) O‘zgaruvchini o‘zgartirish"], answer: "A" },
+    { question: "28. Python-da append() funksiyasi nima uchun ishlatiladi?", options: ["A) Ro‘yxatga element qo‘shish", "B) Ro‘yxatni o‘chirish", "C) Ro‘yxatni tartiblash"], answer: "A" },
+    { question: "29. Python-da input() funksiyasi nima qiladi?", options: ["A) Foydalanuvchidan ma’lumot oladi", "B) Ekranga ma’lumot chiqaradi", "C) Tsikl yaratadi"], answer: "A" },
+    { question: "30. Python-da print() funksiyasi nima qiladi?", options: ["A) Ekranga chiqaradi", "B) O‘zgaruvchini yaratadi", "C) Funksiya e’lon qiladi"], answer: "A" }
+];
+
 
         function loadQuestions() {
             const form = document.getElementById("test-form");

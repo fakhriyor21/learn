@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Basic Proyektlarini Yuboring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('./images/img_bg_1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p, ul {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        ul {
+            text-align: left;
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+            padding: 10px;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsiv dizayn uchun media queries */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            p, ul {
+                font-size: 14px;
+            }
+            textarea {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            p, ul {
+                font-size: 13px;
+            }
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Python Basic Proyektlarini Yuboring</h1>
+        <div id="form">
+            <h2>1️⃣ Sonni Topish O‘yini</h2>
+            <p>Kompyuter 1 dan 100 gacha tasodifiy son o‘ylaydi. Foydalanuvchi ushbu sonni topishi kerak.</p>
+            <ul>
+                <li>Foydalanuvchidan son kiritish so‘raladi</li>
+                <li>Kompyuter "katta" yoki "kichik" deb yordam beradi</li>
+                <li>Agar foydalanuvchi to‘g‘ri topsa, dasturni to‘xtatish</li>
+            </ul>
+            <textarea id="guess" placeholder="Kod kiriting..."></textarea>
+            
+            <h2>2️⃣ Valyuta Konvertori</h2>
+            <p>Foydalanuvchi USD, EUR yoki boshqa valyutani so‘mga aylantira oladigan dastur yozing.</p>
+            <ul>
+                <li>Foydalanuvchidan valyuta turi va miqdorini so‘rash</li>
+                <li>Tegishli kurs bo‘yicha hisoblash</li>
+                <li>Natijani ekranga chiqarish</li>
+            </ul>
+            <textarea id="converter" placeholder="Kod kiriting..."></textarea>
+            
+            <h2>3️⃣ Matnni Teskariga O‘girish</h2>
+            <p>Foydalanuvchi kiritgan matnni teskari shaklda chiqaradigan dastur yozing.</p>
+            <ul>
+                <li>Foydalanuvchidan matn olish</li>
+                <li>Matnni teskari qilib chiqarish</li>
+                <li>Masalan: "salom" → "molas"</li>
+            </ul>
+            <textarea id="reverse" placeholder="Kod kiriting..."></textarea>
+            
+            <button onclick="submitProjects()">Yuborish</button>
+        </div>
+        <div id="successMessage" class="hidden">
+            <h2 style="color: lightgreen;">✅ Loyihalaringiz qabul qilindi!</h2>
+            <p>Ustoz tomonidan tekshirilgach, sizga Basic Python bo‘yicha sertifikat taqdim etiladi.</p>
+        </div>
+    </div>
+
+    <script>
+        function submitProjects() {
+            const guess = document.getElementById("guess").value.trim();
+            const converter = document.getElementById("converter").value.trim();
+            const reverse = document.getElementById("reverse").value.trim();
+            
+            if (guess && converter && reverse) {
+                document.getElementById("form").classList.add("hidden");
+                document.getElementById("successMessage").classList.remove("hidden");
+            } else {
+                alert("Iltimos, barcha loyihalarni to‘liq kiriting!");
+            }
+        }
+    </script>
+</body>
+</html>
